@@ -107,7 +107,7 @@ def extract_data(channels:list):
     return dbytes
 
 def put(in_file, out_file, payload, is_file):
-    if(isFile):
+    if(is_file):
         with open(payload,'rb') as data_file:
             data = data_file.read()
             meta = get_meta(data,payload)
@@ -117,13 +117,13 @@ def put(in_file, out_file, payload, is_file):
     
     to_embed = meta
     to_embed.extend(data)
-    if(isFile):
+    if(is_file):
         to_embed.extend(payload.encode())
     
     sound = AudioSegment.from_file(open(in_file,'rb'))
 
     if(secs_required(to_embed)>sound.duration_seconds):
-        print('Audio is too short in length. You need at least %.3fs of audio to embed this message.' %(sound.duration_seconds))
+        print('Audio is too short in length. You need at least %.3fs of audio to embed this message.' %(secs_required(to_embed)))
         exit
     
     encoded = gen_sig(bytes(to_embed),duration=PULSE_DUR,s_rate=sound.frame_rate,f=F_LIST,amp=AMP)
