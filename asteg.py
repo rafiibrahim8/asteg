@@ -15,24 +15,24 @@ WINDOW = 200
 THRESHOLD = 650
 
 def secs_required(d,fn:str=None):
-	META_LEN = 10 #bytes
-	l = len(d)+META_LEN
-	if(fn):
-		l+=len(fn)
-	return l*PULSE_DUR
+    META_LEN = 10 #bytes
+    l = len(d)+META_LEN
+    if(fn):
+        l+=len(fn)
+    return l*PULSE_DUR
 
 def get_meta(d:bytes,file_name=None,is_enc=False):
-	ret = bytearray('aSx'.encode()) #reserve
-	[ret.append(b) for b in len(d).to_bytes(4,'big')] #payload len
-	if(file_name!=None):
-		if(len(file_name)>127):
-			raise ValueError('Maximum allowable file name length is 127')
-		ret.append((len(file_name)<<1 | (1 if is_enc else 0))& 0xFF) #file name length + is enc
-	else:
-		ret.append((1 if is_enc else 0)) #just_is enc for text
-	ret.append(VERSION_CODE) #version code
-	ret.append(0) #reserve
-	return ret
+    ret = bytearray('aSx'.encode()) #reserve
+    [ret.append(b) for b in len(d).to_bytes(4,'big')] #payload len
+    if(file_name!=None):
+        if(len(file_name)>127):
+            raise ValueError('Maximum allowable file name length is 127')
+        ret.append((len(file_name)<<1 | (1 if is_enc else 0))& 0xFF) #file name length + is enc
+    else:
+        ret.append((1 if is_enc else 0)) #just_is enc for text
+    ret.append(VERSION_CODE) #version code
+    ret.append(0) #reserve
+    return ret
 	
 def __tobits(d):
     return [d>>7 & 1,d>>6 & 1,d>>5 & 1,d>>4 & 1,d>>3 & 1,d>>2 & 1,d>>1 & 1,d & 1]
