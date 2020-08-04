@@ -6,19 +6,19 @@ This program can be used for hiding text or a file inside an audio file. The pro
 # INSTALLATION
 From a command line enter the command to install asteg
 ```
-python -m pip install git+https://github.com/rafiibrahim8/asteg.git
+python3 -m pip install git+https://github.com/rafiibrahim8/asteg.git
 ```
 You need to have python 3 installed. asteg won't run on python 2.
 # USES
 ###### Hiding 'Hello World!' inside infile.mp3. The resultant file is outfile.wav
 #### 
 ```sh
-$ python3 asteg.py -p -o outfile.wav -i infile.mp3 -t 'Hello world!'
+$ asteg -p -o outfile.wav -i infile.mp3 -t 'Hello world!'
 ```
 ###### Hiding secret.odt inside infile.mp3. The resultant file is outfile.wav
 #### 
 ```sh
-$ python3 asteg.py -p -o outfile.wav -i infile.mp3 -f secret.odt
+$ asteg -p -o outfile.wav -i infile.mp3 -f secret.odt
 ```
 
 # META
