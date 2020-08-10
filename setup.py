@@ -9,6 +9,7 @@ def read_file(filename):
         return []
 
 requirements = read_file('requirements.txt')
+long_description = read_file('README.md')
 
 setup(
     name='asteg',
@@ -25,6 +26,8 @@ setup(
     install_requires=requirements,
 
     description='Steganography : Hiding text or file inside an audio',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     keywords=['asteg', 'steganography', 'audio'],
 
     packages=["asteg"],
