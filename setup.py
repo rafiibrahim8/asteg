@@ -1,32 +1,26 @@
-# this file was taken as template from https://github.com/coursera-dl/coursera-dl/blob/master/setup.py
-
 from setuptools import setup
 from asteg import __version__
 
-def read_file(filename, alt=None):
-    """
-    Read the contents of filename or give an alternative result instead.
-    """
-    lines = None
-
+def read_file(filename):
     try:
         with open(filename, encoding='utf-8') as f:
-            lines = f.read()
-    except IOError:
-        lines = [] if alt is None else alt
-    return lines
-
+            return f.read()
+    except:
+        return []
 
 requirements = read_file('requirements.txt')
 
 setup(
     name='asteg',
     version=__version__,
-    maintainer='Ibrahim Rafi',
-    maintainer_email='me@ibrahimrafi.me',
+    
+    author='Ibrahim Rafi',
+    author_email='me@ibrahimrafi.me',
 
     license='MIT',
+
     url='https://github.com/rafiibrahim8/asteg',
+    download_url = 'https://github.com/rafiibrahim8/asteg/archive/v{}.tar.gz'.format(__version__),
 
     install_requires=requirements,
 
@@ -41,4 +35,17 @@ setup(
     ),
 
     platforms=['any'],
+    classifiers=[
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Science/Research',
+    'Topic :: Security :: Cryptography',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+  ],
 )

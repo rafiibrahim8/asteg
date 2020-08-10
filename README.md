@@ -6,7 +6,7 @@ This program can be used for hiding text or a file inside an audio file. The pro
 # INSTALLATION
 From a command line enter the command to install asteg
 ```
-python3 -m pip install git+https://github.com/rafiibrahim8/asteg.git
+pip install asteg
 ```
 You need to have python 3 installed. asteg won't run on python 2.
 # USES
