@@ -10,7 +10,7 @@ def read_file(filename,lines=False):
     except:
         return None
 
-requirements = read_file('requirements.txt', lines=True)
+requirements = read_file('requirements.txt', lines=True) #this does not works when installing from pypi
 long_description = read_file('README.md')
 
 setup(
@@ -25,7 +25,7 @@ setup(
     url='https://github.com/rafiibrahim8/asteg',
     download_url = 'https://github.com/rafiibrahim8/asteg/archive/v{}.tar.gz'.format(__version__),
 
-    install_requires=requirements,
+    install_requires= ['pydub', 'numpy', 'scipy'],
 
     description='Steganography : Hiding text or file inside an audio',
     long_description=long_description,
